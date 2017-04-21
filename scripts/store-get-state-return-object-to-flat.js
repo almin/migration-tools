@@ -78,7 +78,7 @@ module.exports = function(file, api, options) {
         return path.value.properties[0].value;
     })
     .toSource();
-    if (!options.dry) {
+    if (!options.dry && stateName && filePath) {
         updateState(outputJSONPath, stateName, filePath);
     }
     return replaced;

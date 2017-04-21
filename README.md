@@ -18,12 +18,11 @@ Install with [npm](https://www.npmjs.com/):
 
 ```bash
 # Install to global
-npm install -g jscodeshift
-# Install to local
-npm install @almin/migration-tools 
+npm install -g jscodeshift @almin/migration-tools 
 # Run migration scripts
 ## Target: your almin store files
-jscodeshift -t ./node_modules/@almin/scripts/store-get-state-return-object-to-flat.js <path>
+### Notice: Use this script with `--run-in-band` arguments(serial running)
+jscodeshift --run-in-band -t `npm root -g`/@almin/migration-tools/scripts/store-get-state-return-object-to-flat.js <path>
 ```
 
 Store#getState return value migration.
@@ -59,12 +58,10 @@ The `almin-store-state-mapping.json` is used with next script(Convert StoreGroup
 
 ```bash
 # Install to global
-npm install -g jscodeshift
-# Install to local
-npm install @almin/migration-tools 
+npm install -g jscodeshift @almin/migration-tools 
 # Run migration scripts
 ## Target: your almin StoreGroup file
-jscodeshift -t ./node_modules/@almin/scripts/store-group-arguments.js <path>
+jscodeshift -t `npm root -g`/@almin/migration-tools/scripts/store-group-arguments.js <path>
 ```
 
 Migrate StoreGroup constructor arguments.

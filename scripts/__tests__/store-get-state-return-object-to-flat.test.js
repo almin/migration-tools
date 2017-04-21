@@ -11,7 +11,7 @@ describe('store-getState', () => {
             __dirname,
             'store-get-state-return-object-to-flat',
             {
-                dry: true
+                dry: false
             },
             `store-get-state-return-object-to-flat/${ test }`
         )
