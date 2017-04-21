@@ -39,7 +39,7 @@ const updateState = (outputJSONPath, stateName, storeFilePath) => {
 };
 module.exports = function(file, api, options) {
     let stateName = null;
-    const filePath = file.path;
+    const filePath = path.resolve(process.cwd(), file.path);
     const outputJSONPath = path.join(process.cwd(), "almin-store-state-mapping.json");
     const hasOneProperty = ({ node }) => {
         return node.properties && node.properties.length === 1;
