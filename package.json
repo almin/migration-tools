@@ -5,9 +5,8 @@
   "author": "azu",
   "license": "MIT",
   "files": [
-    "bin/",
-    "lib/",
-    "src/"
+    "scripts/",
+    "index.js"
   ],
   "name": "@almin/migration-tools",
   "version": "1.0.0",
