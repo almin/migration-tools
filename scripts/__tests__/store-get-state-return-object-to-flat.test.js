@@ -13,7 +13,7 @@ describe('store-getState', () => {
             {
                 dry: true
             },
-            `${ test }`
+            `store-get-state-return-object-to-flat/${ test }`
         )
     );
 });

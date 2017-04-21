@@ -1,5 +1,30 @@
 // MIT © 2017 azu
 "use strict";
+/**
+ * # Migration Scripts
+ *
+ * Store#getState return value migration.
+ *
+ * This script migrate following adn write stats to `almin-store-state-mapping.json`.
+ *
+ * Found Following pattern and replace
+ *
+ * ```js
+ * getState() {
+ *       return {
+ *           stateName: state
+ *       }
+ * }
+ *
+ * with
+ *
+ * ```js
+ * getState(){
+ *     return state;
+ * }
+ * ```
+ *
+ */
 const fs = require("fs");
 const path = require("path");
 const updateState = (outputJSONPath, stateName, storeFilePath) => {
@@ -15,7 +40,7 @@ const updateState = (outputJSONPath, stateName, storeFilePath) => {
 module.exports = function(file, api, options) {
     let stateName = null;
     const filePath = file.path;
-    const outputJSONPath = path.join(process.cwd(), "store-state-mapping.json");
+    const outputJSONPath = path.join(process.cwd(), "almin-store-state-mapping.json");
     const hasOneProperty = ({ node }) => {
         return node.properties && node.properties.length === 1;
     };
@@ -35,20 +60,6 @@ module.exports = function(file, api, options) {
         return results.size() === 1;
     };
     const j = api.jscodeshift;
-    // found Following pattern
-    /*
-    getState() {
-        return {
-            stateName: state
-        }
-    }
-     */
-    // Replace with Following
-    /*
-    getState(){
-        return state;
-    }
-     */
     const replaced = j(file.source)
     .find(j.ObjectExpression)
     .filter(path => {

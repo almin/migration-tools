@@ -1,0 +1,5 @@
+{
+  "cart": "/path/to/CartStore.js",
+  "customer": "/path/to/CustomerStore.js",
+  "product": "/path/to/ProductStore.js"
+}

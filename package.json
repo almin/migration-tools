@@ -9,7 +9,7 @@
     "lib/",
     "src/"
   ],
-  "name": "migration-tools",
+  "name": "@almin/migration-tools",
   "version": "1.0.0",
   "main": "lib/migration-tools.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "migrate",
     "migration"
   ],
-  "description": "",
+  "description": "Migration scripts for Almin.",
   "repository": {
     "type": "git",
     "url": "https://github.com/almin/migration-tools.git"
