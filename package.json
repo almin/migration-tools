@@ -1,0 +1,39 @@
+{
+  "directories": {
+    "test": "test"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "name": "migration-tools",
+  "version": "1.0.0",
+  "main": "lib/migration-tools.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+  },
+  "keywords": [
+    "almin",
+    "migrate",
+    "migration"
+  ],
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/almin/migration-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/almin/migration-tools/issues"
+  },
+  "homepage": "https://github.com/almin/migration-tools",
+  "devDependencies": {
+    "jest": "^19.0.2",
+    "jscodeshift": "^0.3.30"
+  }
+}
