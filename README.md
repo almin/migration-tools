@@ -6,7 +6,7 @@ Migration scripts for [Almin](https://github.com/almin/almin "Almin").
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install migration-tools
+    npm install @almin/migration-tools
 
 ## Usage
 
@@ -16,7 +16,7 @@ Install with [npm](https://www.npmjs.com/):
 
 **Target**: Store files
 
-```shell-session
+```bash
 # Install to global
 npm install -g jscodeshift
 # Install to local
@@ -41,6 +41,7 @@ class MyStore extends Store {
 ```
 
 with
+
 ```js
 class MyStore extends Store {
     getState() {
@@ -56,7 +57,7 @@ The `almin-store-state-mapping.json` is used with next script(Convert StoreGroup
 
 **Target**: StoreGroup file
 
-```shell-session
+```bash
 # Install to global
 npm install -g jscodeshift
 # Install to local
