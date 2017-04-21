@@ -8,11 +8,11 @@
  * This script migrate following using `store-state-mapping.json`.
  *
  * ```js
- * new StoreGroup(new StoreGroup([
+ * new StoreGroup([
  *   new CartStore(cartRepository),
  *   new CustomerStore(customerRepository),
  *   new ProductStore(productRepository)
- * ]))
+ * ])
  * ```
  *
  * with

@@ -69,11 +69,11 @@ This script migrate following using `store-state-mapping.json`.
 
 
 ```js
-new StoreGroup(new StoreGroup([
+new StoreGroup([
   new CartStore(cartRepository),
   new CustomerStore(customerRepository),
   new ProductStore(productRepository)
-]))
+])
 ```
 with
 
@@ -81,7 +81,7 @@ with
 new StoreGroup({
   "cart": new CartStore(cartRepository),
   "customer": new CustomerStore(customerRepository),
-   "product": new ProductStore(productRepository)
+  "product": new ProductStore(productRepository)
 });
 ```
 
