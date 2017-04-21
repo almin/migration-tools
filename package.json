@@ -10,7 +10,7 @@
   ],
   "name": "@almin/migration-tools",
   "version": "1.0.0",
-  "main": "lib/migration-tools.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
