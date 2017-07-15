@@ -6,6 +6,8 @@
   "license": "MIT",
   "files": [
     "scripts/",
+    "almin-migration-tools.js",
+    "cli-utils.js",
     "index.js"
   ],
   "name": "@almin/migration-tools",
