@@ -1,4 +1,4 @@
-# migration-tools
+# migration-tools [![Build Status](https://travis-ci.org/almin/migration-tools.svg?branch=master)](https://travis-ci.org/almin/migration-tools)
 
 Migration scripts for [Almin](https://github.com/almin/almin "Almin").
 
