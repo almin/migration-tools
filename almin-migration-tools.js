@@ -9,7 +9,7 @@ const pkgConf = require("pkg-conf");
 const inquirer = require("inquirer");
 const npmRunPath = require("npm-run-path");
 const utils = require("./cli-utils");
-const codemods = require("./codemods");
+const migrationVerions = require("./migrations");
 
 function runScripts(scripts, files) {
     const spawnOptions = {
@@ -54,9 +54,9 @@ if (!utils.checkGitStatus(cli.flags.force)) {
     process.exit(1);
 }
 
-codemods.sort(utils.sortByVersion);
+migrationVerions.sort(utils.sortByVersion);
 
-const versions = utils.getVersions(codemods);
+const versions = utils.getVersions(migrationVerions);
 
 const avaConf = pkgConf.sync("ava");
 const defaultFiles = "test.js test-*.js test/**/*.js **/__tests__/**/*.js **/*.test.js";
@@ -65,13 +65,13 @@ const questions = [
     {
         type: "list",
         name: "currentVersion",
-        message: "What version of AVA are you currently using?",
+        message: "What version of Almin are you currently using?",
         choices: versions.slice(0, -1)
     },
     {
         type: "list",
         name: "nextVersion",
-        message: "What version of AVA are you moving to?",
+        message: "What version of Almin are you moving to?",
         choices: versions.slice(1)
     },
     {
@@ -91,7 +91,7 @@ inquirer.prompt(questions, answers => {
         return;
     }
 
-    const scripts = utils.selectScripts(codemods, answers.currentVersion, answers.nextVersion);
+    const scripts = utils.selectScripts(migrationVerions, answers.currentVersion, answers.nextVersion);
 
     runScripts(scripts, globby.sync(files));
 });

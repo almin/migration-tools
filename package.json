@@ -11,6 +11,9 @@
   "name": "@almin/migration-tools",
   "version": "1.0.3",
   "main": "index.js",
+  "bin":{
+    "almin-migration-tools": "./almin-migration-tools.js"
+  },
   "scripts": {
     "precommit": "lint-staged",
     "postcommit": "git reset",
