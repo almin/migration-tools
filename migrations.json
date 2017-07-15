@@ -1,0 +1,8 @@
+[
+  {
+    "version": "0.13.0",
+    "scripts": [
+      "scripts/context-onhandler-to-events.js"
+    ]
+  }
+]

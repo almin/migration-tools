@@ -33,7 +33,7 @@ module.exports = function(file, api, options) {
         : path.join(process.cwd(), "almin-store-state-mapping.json");
     let mapping = {};
     try {
-        mapping = require(outputJSONPath)
+        mapping = require(outputJSONPath);
     } catch (error) {
         mapping = {};
     }
@@ -46,7 +46,7 @@ module.exports = function(file, api, options) {
         return file.source;
     }
     // transform
-    const isStoreGroupArguments = (path) => {
+    const isStoreGroupArguments = path => {
         const parent = path.parent;
         if (!parent) {
             return false;
@@ -62,7 +62,7 @@ module.exports = function(file, api, options) {
     };
 
     // get store name
-    const getStoreNameFromElement = (element) => {
+    const getStoreNameFromElement = element => {
         if (!element) {
             throw new Error(element + " is invalid");
         }
@@ -74,7 +74,7 @@ module.exports = function(file, api, options) {
         throw new Error(element + " is invalid");
     };
 
-    const getStateNameFromStoreName = (storeName) => {
+    const getStateNameFromStoreName = storeName => {
         let result = null;
         const found = Object.keys(mapping).some(stateName => {
             const storeFilePath = mapping[stateName];
@@ -97,19 +97,19 @@ module.exports = function(file, api, options) {
         return result;
     };
     return j(file.source)
-    .find(j.ArrayExpression)
-    .filter(path => {
-        return isStoreGroupArguments(path);
-    })
-    .replaceWith(path => {
-        const elements = path.value.elements;
-        const objects = elements.map(element => {
-            const storeName = getStoreNameFromElement(element);
-            const stateName = getStateNameFromStoreName(storeName);
-            // { stateName: new Store() }
-            return j.property("init", j.literal(stateName), element);
-        });
-        return j.objectExpression(objects)
-    })
-    .toSource();
+        .find(j.ArrayExpression)
+        .filter(path => {
+            return isStoreGroupArguments(path);
+        })
+        .replaceWith(path => {
+            const elements = path.value.elements;
+            const objects = elements.map(element => {
+                const storeName = getStoreNameFromElement(element);
+                const stateName = getStateNameFromStoreName(storeName);
+                // { stateName: new Store() }
+                return j.property("init", j.literal(stateName), element);
+            });
+            return j.objectExpression(objects);
+        })
+        .toSource();
 };

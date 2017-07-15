@@ -2,18 +2,17 @@
 "use strict";
 const defineTest = require('jscodeshift/dist/testUtils').defineTest;
 const tests = [
-    'store-get-state-return-object',
-    'not-replaced',
+    'context'
 ];
-describe('store-getState', () => {
+describe('context-onhandler-to-events', () => {
     tests.forEach(test =>
         defineTest(
             __dirname,
-            'store-get-state-return-object-to-flat',
+            'context-onhandler-to-events',
             {
-                dry: true
+                dry: false
             },
-            `store-get-state-return-object-to-flat/${ test }`
+            `context-onhandler-to-events/${ test }`
         )
     );
 });

@@ -11,8 +11,19 @@
   "name": "@almin/migration-tools",
   "version": "1.0.3",
   "main": "index.js",
+  "bin": {
+    "almin-migration-tools": "./almin-migration-tools.js"
+  },
   "scripts": {
+    "precommit": "lint-staged",
+    "postcommit": "git reset",
     "test": "jest"
+  },
+  "lint-staged": {
+    "scripts/*.js": [
+      "prettier --tab-width 4 --print-width 120 --write",
+      "git add"
+    ]
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
@@ -31,8 +42,24 @@
     "url": "https://github.com/almin/migration-tools/issues"
   },
   "homepage": "https://github.com/almin/migration-tools",
+  "dependencies": {
+    "arrify": "^1.0.1",
+    "execa": "^0.7.0",
+    "globby": "^6.0.0",
+    "inquirer": "^3.2.0",
+    "is-git-clean": "^1.1.0",
+    "jscodeshift": "^0.3.32",
+    "lodash.flatten": "^4.1.1",
+    "lodash.uniq": "^4.2.1",
+    "meow": "^3.7.0",
+    "npm-run-path": "^2.0.2",
+    "semver": "^5.1.0",
+    "update-notifier": "^2.2.0"
+  },
   "devDependencies": {
-    "jest": "^19.0.2",
-    "jscodeshift": "^0.3.30"
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.1",
+    "prettier": "^1.5.2"
   }
 }
