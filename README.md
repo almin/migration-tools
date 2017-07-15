@@ -6,7 +6,7 @@ Migration scripts for [Almin](https://github.com/almin/almin "Almin").
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install @almin/migration-tools
+    npm install -g @almin/migration-tools
 
 ## Usage
 
