@@ -11,7 +11,7 @@
   "name": "@almin/migration-tools",
   "version": "1.0.3",
   "main": "index.js",
-  "bin":{
+  "bin": {
     "almin-migration-tools": "./almin-migration-tools.js"
   },
   "scripts": {
@@ -53,7 +53,6 @@
     "lodash.uniq": "^4.2.1",
     "meow": "^3.7.0",
     "npm-run-path": "^2.0.2",
-    "pkg-conf": "^2.0.0",
     "semver": "^5.1.0",
     "update-notifier": "^2.2.0"
   },

@@ -5,7 +5,6 @@ const meow = require("meow");
 const updateNotifier = require("update-notifier");
 const arrify = require("arrify");
 const globby = require("globby");
-const pkgConf = require("pkg-conf");
 const inquirer = require("inquirer");
 const npmRunPath = require("npm-run-path");
 const utils = require("./cli-utils");
@@ -29,14 +28,14 @@ function runScripts(scripts, files) {
 const cli = meow(
     `
 	Usage
-	  $ ava-codemods [<file|glob> ...]
+	  $ almin-migration-tools [<file|glob> ...]
 
 	Options
+	  --help         Show help.
 	  --force, -f    Bypass safety checks and forcibly run codemods
 
 	Available upgrades
-	  - 0.16.x → 0.17.x
-	  - 0.13.x → 0.14.x
+	  - 0.12.x → 0.13.x
 `,
     {
         boolean: ["force"],
@@ -57,9 +56,7 @@ if (!utils.checkGitStatus(cli.flags.force)) {
 migrationVerions.sort(utils.sortByVersion);
 
 const versions = utils.getVersions(migrationVerions);
-
-const avaConf = pkgConf.sync("ava");
-const defaultFiles = "test.js test-*.js test/**/*.js **/__tests__/**/*.js **/*.test.js";
+const defaultFiles = "src/**/*.js";
 
 const questions = [
     {
@@ -78,15 +75,14 @@ const questions = [
         type: "input",
         name: "files",
         message: "On which files should the codemods be applied?",
-        default: (avaConf.files && arrify(avaConf.files).join(" ")) || defaultFiles,
+        default: defaultFiles,
         when: !cli.input.length,
         filter: files => files.trim().split(/\s+/).filter(v => v)
     }
 ];
 
-inquirer.prompt(questions, answers => {
+inquirer.prompt(questions).then(answers => {
     const files = answers.files || cli.input;
-
     if (!files.length) {
         return;
     }

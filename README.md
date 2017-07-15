@@ -10,7 +10,52 @@ Install with [npm](https://www.npmjs.com/):
 
 ## Usage
 
+Simply run `almin-migration-tools` in your terminal and answer a few questions.
+You can pass a filename directly to the CLI. If you do not, you will be prompted for one.
+
+Ensure you have a backup of your source code or commit the latest changes before running this.
+
+	Usage
+	  $ almin-migration-tools [<file|glob> ...]
+
+	Options
+	  --help         Show help.
+	  --force, -f    Bypass safety checks and forcibly run codemods
+
+	Available upgrades
+	  - 0.12.x → 0.13.x
+
+### Migrate 0.12 to 0.13
+
+Run `almin-migration-tools`  
+
+- Renaming: `context.on*` to `context.events.on*` without `context.onChange`
+     - `Context.onChange` is still on `Context` prototype.
+     - Because, it is not life-cycle events and it is optimized for updating UI.
+
+```js
+context.onWillExecuteEachUseCase((payload, meta) => {});
+context.onDispatch((payload, meta) => {});
+context.onDidExecuteEachUseCase((payload, meta) => {});
+context.onCompleteEachUseCase((payload, meta) => {});
+context.onErrorDispatch((payload, meta) => {});
+```
+
+to
+
+```js
+context.events.onWillExecuteEachUseCase((payload, meta) => {});
+context.events.onDispatch((payload, meta) => {});
+context.events.onDidExecuteEachUseCase((payload, meta) => {});
+context.events.onCompleteEachUseCase((payload, meta) => {});
+context.events.onErrorDispatch((payload, meta) => {});
+```
+
 ### Migrate 0.11 to 0.12
+
+**Notes**: Sadly, this old migration script is not automated...
+
+Please do following steps. 
 
 ### Convert Store#getState scripts
 
@@ -120,3 +165,7 @@ For bugs and feature requests, [please create an issue](https://github.com/almin
 ## License
 
 MIT © azu
+
+## Thanks
+
+[avajs/ava-codemods: Codemods for AVA](https://github.com/avajs/ava-codemods "avajs/ava-codemods: Codemods for AVA")
