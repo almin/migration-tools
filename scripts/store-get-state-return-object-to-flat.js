@@ -30,7 +30,7 @@ const path = require("path");
 const updateState = (outputJSONPath, stateName, storeFilePath) => {
     let output = {};
     try {
-        output = require(outputJSONPath)
+        output = require(outputJSONPath);
     } catch (error) {
         output = {};
     }
@@ -44,15 +44,13 @@ module.exports = function(file, api, options) {
     const hasOneProperty = ({ node }) => {
         return node.properties && node.properties.length === 1;
     };
-    const isReturnedValue = (path) => {
+    const isReturnedValue = path => {
         const parentNode = path.parent;
         return parentNode.value.type === "ReturnStatement";
     };
     // look up to parent
-    const isInGetStateMethod = (targetPath) => {
-        const results = j(targetPath)
-        .closest(j.MethodDefinition)
-        .filter(path => {
+    const isInGetStateMethod = targetPath => {
+        const results = j(targetPath).closest(j.MethodDefinition).filter(path => {
             return j(path).find(j.Identifier, {
                 name: "getState"
             });
@@ -61,23 +59,23 @@ module.exports = function(file, api, options) {
     };
     const j = api.jscodeshift;
     const replaced = j(file.source)
-    .find(j.ObjectExpression)
-    .filter(path => {
-        return hasOneProperty(path);
-    })
-    .filter(path => {
-        return isReturnedValue(path)
-    })
-    .filter(path => {
-        return isInGetStateMethod(path);
-    })
-    .replaceWith(path => {
-        stateName = path.value.properties[0].key.name;
-        // { stateName: state }
-        // => state
-        return path.value.properties[0].value;
-    })
-    .toSource();
+        .find(j.ObjectExpression)
+        .filter(path => {
+            return hasOneProperty(path);
+        })
+        .filter(path => {
+            return isReturnedValue(path);
+        })
+        .filter(path => {
+            return isInGetStateMethod(path);
+        })
+        .replaceWith(path => {
+            stateName = path.value.properties[0].key.name;
+            // { stateName: state }
+            // => state
+            return path.value.properties[0].value;
+        })
+        .toSource();
     if (!options.dry && stateName && filePath) {
         updateState(outputJSONPath, stateName, filePath);
     }
