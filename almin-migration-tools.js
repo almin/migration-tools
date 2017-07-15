@@ -8,7 +8,7 @@ const globby = require("globby");
 const inquirer = require("inquirer");
 const npmRunPath = require("npm-run-path");
 const utils = require("./cli-utils");
-const migrationVerions = require("./migrations");
+const migrationVersions = require("./migrations.json");
 
 function runScripts(scripts, files) {
     const spawnOptions = {
@@ -53,9 +53,9 @@ if (!utils.checkGitStatus(cli.flags.force)) {
     process.exit(1);
 }
 
-migrationVerions.sort(utils.sortByVersion);
+migrationVersions.sort(utils.sortByVersion);
 
-const versions = utils.getVersions(migrationVerions);
+const versions = utils.getVersions(migrationVersions);
 const defaultFiles = "src/**/*.js";
 
 const questions = [
@@ -87,7 +87,7 @@ inquirer.prompt(questions).then(answers => {
         return;
     }
 
-    const scripts = utils.selectScripts(migrationVerions, answers.currentVersion, answers.nextVersion);
+    const scripts = utils.selectScripts(migrationVersions, answers.currentVersion, answers.nextVersion);
 
     runScripts(scripts, globby.sync(files));
 });
