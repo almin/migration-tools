@@ -47,7 +47,7 @@ module.exports = function transformer(file, api) {
         if (callee.object.type !== "Identifier") {
             return false;
         }
-        return callee.object.name === "context";
+        return callee.object.name === "context" || callee.object.name === "appContext";
     };
 
     return j(file.source)
