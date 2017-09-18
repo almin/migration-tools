@@ -47,22 +47,22 @@
   "homepage": "https://github.com/almin/migration-tools",
   "dependencies": {
     "arrify": "^1.0.1",
-    "execa": "^0.7.0",
+    "execa": "^0.8.0",
     "globby": "^6.0.0",
-    "inquirer": "^3.2.0",
+    "inquirer": "^3.3.0",
     "is-git-clean": "^1.1.0",
     "jscodeshift": "^0.3.32",
     "lodash.flatten": "^4.1.1",
     "lodash.uniq": "^4.2.1",
     "meow": "^3.7.0",
     "npm-run-path": "^2.0.2",
-    "semver": "^5.1.0",
+    "semver": "^5.4.1",
     "update-notifier": "^2.2.0"
   },
   "devDependencies": {
     "husky": "^0.14.3",
-    "jest": "^20.0.4",
-    "lint-staged": "^4.0.1",
-    "prettier": "^1.5.2"
+    "jest": "^21.1.0",
+    "lint-staged": "^4.2.1",
+    "prettier": "^1.7.0"
   }
 }
