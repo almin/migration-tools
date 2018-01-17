@@ -52,12 +52,15 @@ function isNewExpressionChangedPayload(path) {
 module.exports = function transformer(file, api) {
     const j = api.jscodeshift;
     // Remove `import { ChangedPayload } from "almin"
+    let hasAlmin = false;
+
     return (
         j(
             j(file.source)
                 .find(j.ImportSpecifier)
                 .filter(path => {
-                    return isChangedPayloadImportSpecifier(path);
+                    hasAlmin = isChangedPayloadImportSpecifier(path);
+                    return hasAlmin;
                 })
                 .remove()
                 .toSource()
@@ -65,13 +68,13 @@ module.exports = function transformer(file, api) {
             // Rewrite new ChangedPayload() => { type: "ChangedPayload" }
             .find(j.NewExpression)
             .filter(path => {
-                let newExpressionChangedPayload = isNewExpressionChangedPayload(path);
-                console.log(newExpressionChangedPayload);
-                return newExpressionChangedPayload;
+                if (!hasAlmin) {
+                    return false;
+                }
+                return isNewExpressionChangedPayload(path);
             })
             .replaceWith(path => {
                 return `{ type: "ChangedPayload" }`;
-                R;
             })
             .toSource()
     );
