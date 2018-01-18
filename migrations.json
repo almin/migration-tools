@@ -4,5 +4,11 @@
     "scripts": [
       "scripts/context-onhandler-to-events.js"
     ]
+  },
+  {
+    "version": "0.15.0",
+    "scripts": [
+      "scripts/remove-ChangedPayload.js"
+    ]
   }
 ]

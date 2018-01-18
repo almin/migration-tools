@@ -36,6 +36,7 @@ const cli = meow(
 
 	Available upgrades
 	  - 0.12.x → 0.13.x
+	  - 0.14.x → 0.15.x
 `,
     {
         boolean: ["force"],
