@@ -51,13 +51,13 @@
     "globby": "^6.0.0",
     "inquirer": "^3.3.0",
     "is-git-clean": "^1.1.0",
-    "jscodeshift": "^0.3.32",
+    "jscodeshift": "^0.4.0",
     "lodash.flatten": "^4.1.1",
     "lodash.uniq": "^4.2.1",
     "meow": "^3.7.0",
     "npm-run-path": "^2.0.2",
-    "semver": "^5.4.1",
-    "update-notifier": "^2.2.0"
+    "semver": "^5.5.0",
+    "update-notifier": "^2.3.0"
   },
   "devDependencies": {
     "husky": "^0.14.3",
