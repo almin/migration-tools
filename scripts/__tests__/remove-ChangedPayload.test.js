@@ -4,6 +4,8 @@ const defineTest = require('jscodeshift/dist/testUtils').defineTest;
 const tests = [
     'import',
     'dispatch',
+    'non-almin-ChangedPayload',
+    'assign-ChangedPayload-to-variable',
 ];
 describe('remove-ChangedPayload', () => {
     tests.forEach(test =>

@@ -39,7 +39,6 @@ function isNewExpressionChangedPayload(path) {
         return false;
     }
     const expression = node;
-    console.log("expression", expression);
     return (
         expression &&
         expression.type === "NewExpression" &&
@@ -51,11 +50,10 @@ function isNewExpressionChangedPayload(path) {
 
 module.exports = function transformer(file, api) {
     const j = api.jscodeshift;
-    // Remove `import { ChangedPayload } from "almin"
     let hasAlmin = false;
-
     return (
         j(
+            // Remove `import { ChangedPayload } from "almin"
             j(file.source)
                 .find(j.ImportSpecifier)
                 .filter(path => {
