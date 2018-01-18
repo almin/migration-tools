@@ -10,12 +10,16 @@ const utils = require("./cli-utils");
 const migrationVersions = require("./migrations.json");
 
 function runScripts(scripts, files) {
+    if (files.length === 0) {
+        return;
+    }
     const spawnOptions = {
         env: Object.assign({}, process.env, { PATH: npmRunPath({ cwd: __dirname }) }),
         stdio: "inherit"
     };
 
     scripts.forEach(script => {
+        console.log(["-t", script].concat(files));
         const result = execa.sync(require.resolve(".bin/jscodeshift"), ["-t", script].concat(files), spawnOptions);
 
         if (result.error) {
@@ -88,6 +92,10 @@ inquirer.prompt(questions).then(answers => {
     }
 
     const scripts = utils.selectScripts(migrationVersions, answers.currentVersion, answers.nextVersion);
-
-    runScripts(scripts, globby.sync(files));
+    const targetFileList = globby.sync(files);
+    if(targetFileList.length === 0) {
+        console.log(`No files that match the glob patterns: ${files}`);
+        return;
+    }
+    runScripts(scripts, targetFileList);
 });
