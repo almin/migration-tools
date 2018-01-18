@@ -3,7 +3,6 @@
 const execa = require("execa");
 const meow = require("meow");
 const updateNotifier = require("update-notifier");
-const arrify = require("arrify");
 const globby = require("globby");
 const inquirer = require("inquirer");
 const npmRunPath = require("npm-run-path");
