@@ -25,9 +25,57 @@ Ensure you have a backup of your source code or commit the latest changes before
 	Available upgrades
 	  - 0.12.x → 0.13.x
 
-### Migrate 0.12 to 0.13
+## Migrations
 
-Run `almin-migration-tools`  
+### 0.13.x → 0.15.x
+
+#### How to migrate?
+
+Run following command and select `0.13.x → 0.15.x`
+
+```
+$ almin-migration-tools
+```
+
+#### What is changed?
+
+`ChangedPayload` has been removed.
+
+- [Almin 0.15.0 · Issue #287 · almin/almin](https://github.com/almin/almin/issues/287 "Almin 0.15.0 · Issue #287 · almin/almin")
+
+```js
+import { UseCase, ChangedPayload } from "almin";
+
+export class ExampleUseCase extends UseCase {
+    execute() {
+        this.context.useCase(new ChangedPayload()).execute();
+    }
+}
+```
+
+to 
+
+```js
+import { UseCase } from "almin";
+
+export class ExampleUseCase extends UseCase {
+    execute() {
+        this.context.useCase({ type: "ChangedPayload" }).execute();
+    }
+}
+```
+
+### 0.12.x → 0.13.x
+
+#### How to migrate?
+
+Run following command and select `0.12.x → 0.13.x`
+
+```
+$ almin-migration-tools
+```
+
+#### What is changed?
 
 - Renaming: `context.on*` to `context.events.on*` without `context.onChange`
      - `Context.onChange` is still on `Context` prototype.
@@ -51,13 +99,15 @@ context.events.onCompleteEachUseCase((payload, meta) => {});
 context.events.onErrorDispatch((payload, meta) => {});
 ```
 
-### Migrate 0.11 to 0.12
+### 0.11.x → 0.12.x
+
+#### How to migrate?
 
 **Notes**: Sadly, this old migration script is not automated...
 
 Please do following steps. 
 
-### Convert Store#getState scripts
+##### Convert Store#getState scripts
 
 **Target**: Store files
 
@@ -84,7 +134,7 @@ class MyStore extends Store {
 }
 ```
 
-with
+to
 
 ```js
 class MyStore extends Store {
@@ -97,7 +147,7 @@ class MyStore extends Store {
 This script output stats as `almin-store-state-mapping.json`.
 The `almin-store-state-mapping.json` is used with next script(Convert StoreGroup constructor).
 
-### Convert StoreGroup constructor
+##### Convert StoreGroup constructor
 
 **Target**: StoreGroup file
 
@@ -130,10 +180,11 @@ new StoreGroup({
 });
 ```
 
-### Options
+##### Options
 
 - `mapping`: path to `almin-store-state-mapping.json`.
     - Default: using `almin-store-state-mapping.json` in current directory.
+
 
 ## Changelog
 
