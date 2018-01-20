@@ -12,7 +12,7 @@
     "index.js"
   ],
   "name": "@almin/migration-tools",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "index.js",
   "bin": {
     "almin-migration-tools": "./almin-migration-tools.js"
