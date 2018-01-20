@@ -15,15 +15,15 @@ You can pass a filename directly to the CLI. If you do not, you will be prompted
 
 Ensure you have a backup of your source code or commit the latest changes before running this.
 
-	Usage
-	  $ almin-migration-tools [<file|glob> ...]
+    Usage
+      $ almin-migration-tools <path|glob>
 
-	Options
-	  --help         Show help.
-	  --force, -f    Bypass safety checks and forcibly run codemods
+    Options:
+      --dry-run Enable dry run mode
+      --force, -f    Bypass safety checks and forcibly run codemods
 
-	Available upgrades
-	  - 0.12.x → 0.13.x
+    Examples
+      $ almin-migration-tools "src/**/*.js"
 
 ## Migrations
 

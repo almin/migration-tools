@@ -7,8 +7,7 @@
   "files": [
     "scripts/",
     "almin-migration-tools.js",
-    "migrations.json",
-    "cli-utils.js",
+    "migrations.js",
     "index.js"
   ],
   "name": "@almin/migration-tools",
@@ -46,23 +45,16 @@
   },
   "homepage": "https://github.com/almin/migration-tools",
   "dependencies": {
-    "arrify": "^1.0.1",
-    "execa": "^0.8.0",
-    "globby": "^6.0.0",
-    "inquirer": "^3.3.0",
-    "is-git-clean": "^1.1.0",
+    "code-migrator": "^1.0.2",
     "jscodeshift": "^0.4.0",
-    "lodash.flatten": "^4.1.1",
-    "lodash.uniq": "^4.2.1",
-    "meow": "^3.7.0",
+    "meow": "^4.0.0",
     "npm-run-path": "^2.0.2",
-    "semver": "^5.5.0",
     "update-notifier": "^2.3.0"
   },
   "devDependencies": {
     "husky": "^0.14.3",
     "jest": "^21.1.0",
-    "lint-staged": "^4.2.1",
-    "prettier": "^1.7.0"
+    "lint-staged": "^6.0.1",
+    "prettier": "^1.10.2"
   }
 }
