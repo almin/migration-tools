@@ -7,7 +7,7 @@ const migrationVersions = require("./migrations.js");
 const cli = meow(
     `
     Usage
-      $ almin-migration-tools <path|glob>
+      $ almin-migration-tools [<file|glob>]
 
     Options:
       --dry-run Enable dry run mode
