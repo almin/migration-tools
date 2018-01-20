@@ -19,7 +19,6 @@ function runScripts(scripts, files) {
     };
 
     scripts.forEach(script => {
-        console.log(["-t", script].concat(files));
         const result = execa.sync(require.resolve(".bin/jscodeshift"), ["-t", script].concat(files), spawnOptions);
 
         if (result.error) {
