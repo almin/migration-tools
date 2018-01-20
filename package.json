@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/almin/migration-tools",
   "dependencies": {
-    "code-migrator": "^1.0.1",
+    "code-migrator": "^1.0.2",
     "jscodeshift": "^0.4.0",
     "meow": "^4.0.0",
     "npm-run-path": "^2.0.2",
