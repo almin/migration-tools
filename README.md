@@ -16,9 +16,10 @@ You can pass a filename directly to the CLI. If you do not, you will be prompted
 Ensure you have a backup of your source code or commit the latest changes before running this.
 
     Usage
-      $ almin-migration-tools <path|glob>
+      $ almin-migration-tools [<file|glob>]
 
     Options:
+      --script  Run with specified migration script
       --dry-run Enable dry run mode
       --force, -f    Bypass safety checks and forcibly run codemods
 
