@@ -2,6 +2,8 @@
 
 Migration scripts for [Almin](https://github.com/almin/almin "Almin").
 
+![Screen Shot GIF](./docs/screen-shot.gif)
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
