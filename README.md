@@ -2,6 +2,8 @@
 
 Migration scripts for [Almin](https://github.com/almin/almin "Almin").
 
+![Screen Shot GIF](./docs/screen-shot.gif)
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
@@ -16,14 +18,20 @@ You can pass a filename directly to the CLI. If you do not, you will be prompted
 Ensure you have a backup of your source code or commit the latest changes before running this.
 
     Usage
-      $ almin-migration-tools <path|glob>
+      $ almin-migration-tools [<file|glob>]
 
     Options:
+      --script  Run with specified migration script
       --dry-run Enable dry run mode
       --force, -f    Bypass safety checks and forcibly run codemods
 
     Examples
-      $ almin-migration-tools "src/**/*.js"
+      # Interactive mode
+      $ almin-migration-tools
+      # Interactive mode, but it has default targets
+      $ almin-migration-tools  "src/**/*.js"
+      # Non interactive mode, specified script name
+      $ almin-migration-tools --script "store-group-arguments" "src/**/store/**/*.js"
 
 ## Migrations
 
@@ -113,11 +121,10 @@ Please do following steps.
 
 ```bash
 # Install to global
-npm install -g jscodeshift @almin/migration-tools 
+npm install -g @almin/migration-tools 
 # Run migration scripts
 ## Target: your almin store files
-### Notice: Use this script with `--run-in-band` arguments(serial running)
-jscodeshift --run-in-band -t `npm root -g`/@almin/migration-tools/scripts/store-get-state-return-object-to-flat.js <path>
+almin-migration-tools --script "store-get-state-return-object-to-flat" "src/**/store/**/*.js"
 ```
 
 Store#getState return value migration.
@@ -153,10 +160,10 @@ The `almin-store-state-mapping.json` is used with next script(Convert StoreGroup
 
 ```bash
 # Install to global
-npm install -g jscodeshift @almin/migration-tools 
+npm install -g @almin/migration-tools 
 # Run migration scripts
 ## Target: your almin StoreGroup file
-jscodeshift -t `npm root -g`/@almin/migration-tools/scripts/store-group-arguments.js <path>
+almin-migration-tools --script "store-group-arguments" "src/**/store/**/*.js"
 ```
 
 Migrate StoreGroup constructor arguments.
