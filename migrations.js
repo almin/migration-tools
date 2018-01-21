@@ -10,6 +10,13 @@ module.exports = {
         {
             name: "remove-ChangedPayload",
             filePath: require.resolve("./scripts/remove-ChangedPayload.js")
+        },
+        {
+            name: "store-get-state-return-object-to-flat",
+            filePath: require.resolve("./scripts/store-get-state-return-object-to-flat"),
+        }, {
+            name: "store-group-arguments",
+            filePath: require.resolve("./scripts/store-group-arguments"),
         }
     ],
     "versions": [
