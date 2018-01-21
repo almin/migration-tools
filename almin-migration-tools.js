@@ -14,7 +14,12 @@ const cli = meow(`
       --force, -f    Bypass safety checks and forcibly run codemods
 
     Examples
-      $ almin-migration-tools "src/**/*.js"
+      # Interactive mode
+      $ almin-migration-tools
+      # Interactive mode, but it has default targets
+      $ almin-migration-tools  "src/**/*.js"
+      # Non interactive mode, specified script name
+      $ almin-migration-tools --script "store-group-arguments" "src/**/store/**/*.js"
 `,
     {
         flags: {
