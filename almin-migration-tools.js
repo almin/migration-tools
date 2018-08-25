@@ -49,11 +49,18 @@ updateNotifier({ pkg: cli.pkg }).notify();
 const migrator = new CodeMigrator({
     moduleName: "almin",
     migrationList: migrationVersions,
-    binCreator: () => {
+    binCreator: ({ script, filePathList }) => {
+        if (script.type === "babel-codemod") {
+            const binArgs = cli.flags.dryRun ? ["--dry"] : [];
+            return {
+                binPath: require.resolve(".bin/codemod"),
+                binArgs: binArgs.concat(["-p", script.filePath]).concat(filePathList)
+            };
+        }
         const binArgs = cli.flags.dryRun ? ["--dry"] : [];
         return {
             binPath: require.resolve(".bin/jscodeshift"),
-            binArgs
+            binArgs: binArgs.concat(["-t", script.filePath]).concat(filePathList)
         };
     }
 });
