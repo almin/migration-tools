@@ -35,11 +35,11 @@ Ensure you have a backup of your source code or commit the latest changes before
 
 ## Migrations
 
-### 0.15.x → 0.17.x
+### 0.15.x → 0.18.x
 
 #### How to migrate?
 
-Run following command and select `0.15.x → 0.17.x`
+Run following command and select `0.15.x → 0.18.x`
 
 ```
 $ almin-migration-tools
