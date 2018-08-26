@@ -42,7 +42,14 @@ module.exports = {
                 "remove-ChangedPayload"
             ]
         },
-
+        {
+            "version": "0.16.0",
+            "scripts": []
+        },
+        {
+            "version": "0.17.0",
+            "scripts": []
+        },
         {
             "version": "0.18.0",
             "scripts": [
