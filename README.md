@@ -35,6 +35,54 @@ Ensure you have a backup of your source code or commit the latest changes before
 
 ## Migrations
 
+### 0.17.x → 0.18.x
+
+#### How to migrate?
+
+Run following command and select `0.17.x → 0.18.x`
+
+```
+$ almin-migration-tools
+```
+
+
+#### What is changed?
+
+`executor()` is deprecated.
+You should use `UseCaseExecutor#execute` instead of `UseCaseExecutor#executor`.
+
+- [Deprecate `executor()` · Issue #356 · almin/almin](https://github.com/almin/almin/issues/356)
+
+Before:  `executor()`
+
+```ts
+import { UseCase, Context } from "almin";
+class MyUseCaseA extends UseCase {
+    execute(_a: string) {}
+}
+const context = new Context({
+    store: createStore({ name: "test" })
+});
+
+// executor
+context.useCase(new MyUseCaseA()).executor(useCase => useCase.execute("A")); 
+```
+
+After: `execute()`
+
+```ts
+import { UseCase, Context } from "almin";
+class MyUseCaseA extends UseCase {
+    execute(_a: string) {}
+}
+const context = new Context({
+    store: createStore({ name: "test" })
+});
+
+//execute
+context.useCase(new MyUseCaseA()).execute("A");
+```
+
 ### 0.13.x → 0.15.x
 
 #### How to migrate?

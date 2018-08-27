@@ -14,9 +14,15 @@ module.exports = {
         {
             name: "store-get-state-return-object-to-flat",
             filePath: require.resolve("./scripts/store-get-state-return-object-to-flat"),
-        }, {
+        },
+        {
             name: "store-group-arguments",
             filePath: require.resolve("./scripts/store-group-arguments"),
+        },
+        {
+            name: "executor-to-execute",
+            filePath: require.resolve("./scripts/babel-codemod/executor-to-execute.js"),
+            type: "babel-codemod"
         }
     ],
     "versions": [
@@ -34,6 +40,20 @@ module.exports = {
             "version": "0.15.0",
             "scripts": [
                 "remove-ChangedPayload"
+            ]
+        },
+        {
+            "version": "0.16.0",
+            "scripts": []
+        },
+        {
+            "version": "0.17.0",
+            "scripts": []
+        },
+        {
+            "version": "0.18.0",
+            "scripts": [
+                "executor-to-execute"
             ]
         }
     ]

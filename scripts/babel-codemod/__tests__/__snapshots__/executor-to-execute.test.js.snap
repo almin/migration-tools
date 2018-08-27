@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`executor-to-execute does-not-change-executor.ts 1`] = `
+"const expression = useCase => useCase.execute(\\"A\\");
+context.useCase(new MyUseCaseA()).executor(expression);
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const expression = useCase => useCase.execute(\\"A\\");
+context.useCase(new MyUseCaseA()).executor(expression);
+"
+`;
+
+exports[`executor-to-execute evincive-return-execute.ts 1`] = `
+"const value: string = \\"asasea\\";
+context.useCase(createMyUseCaseA()).executor(useCase => {
+    return useCase.execute(value)
+});
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const value: string = \\"asasea\\";
+context.useCase(createMyUseCaseA()).execute(value);
+"
+`;
+
+exports[`executor-to-execute no-arguments.ts 1`] = `
+"context.useCase(new MyUseCaseA()).executor(useCase => useCase.execute());
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+context.useCase(new MyUseCaseA()).execute();
+"
+`;
+
+exports[`executor-to-execute return-function-expression.ts 1`] = `
+"context.useCase(createMyUseCaseA()).executor(function (useCase) {
+    return useCase.execute(1, 2, { key: \\"3\\" })
+});
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+context.useCase(createMyUseCaseA()).execute(1, 2, { key: \\"3\\" });
+"
+`;
+
+exports[`executor-to-execute simple.js 1`] = `
+"import { UseCase, Context } from \\"almin\\";
+
+class MyUseCaseA extends UseCase {
+    execute(_a) {
+        console.log(_a)
+    }
+}
+
+const context = new Context({
+    store: createStore({ name: \\"test\\" })
+});
+
+context.useCase(new MyUseCaseA()).executor(useCase => useCase.execute(\\"A\\"));
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import { UseCase, Context } from \\"almin\\";
+
+class MyUseCaseA extends UseCase {
+    execute(_a) {
+        console.log(_a)
+    }
+}
+
+const context = new Context({
+    store: createStore({ name: \\"test\\" })
+});
+
+context.useCase(new MyUseCaseA()).execute(\\"A\\");
+"
+`;
+
+exports[`executor-to-execute simple.ts 1`] = `
+"import { UseCase, Context } from \\"almin\\";
+
+class MyUseCaseA extends UseCase {
+    execute(_a: string) {
+    }
+}
+
+const context = new Context({
+    store: createStore({ name: \\"test\\" })
+});
+
+context.useCase(new MyUseCaseA()).executor(useCase => useCase.execute(\\"A\\"));
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import { UseCase, Context } from \\"almin\\";
+
+class MyUseCaseA extends UseCase {
+    execute(_a: string) {
+    }
+}
+
+const context = new Context({
+    store: createStore({ name: \\"test\\" })
+});
+
+context.useCase(new MyUseCaseA()).execute(\\"A\\");
+"
+`;
