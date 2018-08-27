@@ -1268,9 +1268,9 @@ co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
 
-code-migrator@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/code-migrator/-/code-migrator-1.3.2.tgz#6e3b3e70e94c9fa8e6425151422eb9176caabc40"
+code-migrator@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/code-migrator/-/code-migrator-2.0.0.tgz#1701f252d65df261b9b1453e7a902094c720af6a"
   dependencies:
     "@types/debug" "^0.0.30"
     "@types/execa" "^0.8.1"
